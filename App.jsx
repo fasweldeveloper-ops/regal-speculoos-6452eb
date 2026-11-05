@@ -170,11 +170,11 @@ function App() {
               {kiswahili ? 'MATOKEO NA RATIBA' : 'SCORES & FIXTURES'}
             </span>
             <h1>{kiswahili ? 'Mechi za Soka' : 'Football Matches'}</h1>
-            <p className="muted">
-              {kiswahili
-                ? 'Chagua mechi kuona maelezo na mfano wa maoni ya Kiswahili.'
-                : 'Select a match to see details and sample Kiswahili commentary.'}
-            </p>
+          <p className="muted">
+  {kiswahili
+    ? 'Angalia matokeo ya mechi kutoka kwenye huduma ya soka.'
+    : 'View football match results from the football data service.'}
+</p>
 
             {matches.map((match, index) => (
               <MatchCard
