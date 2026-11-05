@@ -73,8 +73,6 @@ function App() {
   return () => clearInterval(interval)
 }, [])
     
-      .then((data) => {
-        if (data.success !== 1) throw new Error('Football data unavailable')
 
         const liveMatches = (data.result || []).map((event) => {
   const score = event.event_final_result || event.event_halftime_result || ''
