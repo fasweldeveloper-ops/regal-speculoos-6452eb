@@ -137,17 +137,25 @@ function App() {
                 </button>
               </div>
 
-              {matches.slice(0, 2).map((match, index) => (
-                <MatchCard
-                  key={match.home}
-                  match={match}
-                  kiswahili={kiswahili}
-                  onClick={() => {
-                    setSelectedMatch(index)
-                    setPage('Matches')
-                  }}
-                />
-              ))}
+          {loading && <p className="muted">Inapakia mechi...</p>}
+
+{apiError && <p className="demo-note">{apiError}</p>}
+
+{!loading && !apiError && matches.length === 0 && (
+  <p className="muted">Hakuna mechi zinazopatikana kwa sasa.</p>
+)}
+
+{!loading && matches.slice(0, 2).map((match, index) => (
+  <MatchCard
+    key={match.home}
+    match={match}
+    kiswahili={kiswahili}
+    onClick={() => {
+      setSelectedMatch(index)
+      setPage('Matches')
+    }}
+  />
+))}
               <p className="demo-note">
                 {kiswahili
                   ? 'Matokeo haya ni ya mfano, si matokeo ya moja kwa moja.'
