@@ -156,11 +156,7 @@ function App() {
     }}
   />
 ))}
-              <p className="demo-note">
-                {kiswahili
-                  ? 'Matokeo haya ni ya mfano, si matokeo ya moja kwa moja.'
-                  : 'These are demo scores, not live results.'}
-              </p>
+        
             </section>
 
             <Commentary kiswahili={kiswahili} />
