@@ -176,7 +176,34 @@ function App() {
     : 'View football match results from the football data service.'}
 </p>
 
-            {matches.map((match, index) => (
+        {loading && (
+  <p className="muted">
+    {kiswahili ? 'Inapakia mechi...' : 'Loading matches...'}
+  </p>
+)}
+
+{apiError && (
+  <p className="demo-note">{apiError}</p>
+)}
+
+{!loading && !apiError && matches.length === 0 && (
+  <p className="muted">
+    {kiswahili
+      ? 'Hakuna mechi zinazopatikana kwa sasa.'
+      : 'No matches available right now.'}
+  </p>
+)}
+
+{!loading && matches.map((match, index) => (
+  <MatchCard
+    key={`${match.home}-${match.away}`}
+    match={match}
+    kiswahili={kiswahili}
+    onClick={() =>
+      setSelectedMatch(selectedMatch === index ? null : index)
+    }
+  />
+))}
               <MatchCard
                 key={match.home}
                 match={match}
