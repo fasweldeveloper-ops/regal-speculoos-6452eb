@@ -1,33 +1,5 @@
-
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './App.css'
-
-const matches = [
-  {
-    league: 'ENGLISH PREMIER LEAGUE',
-    home: 'Arsenal',
-    away: 'Chelsea',
-    homeScore: 2,
-    awayScore: 1,
-    status: 'FULL TIME',
-  },
-  {
-    league: 'AFRICAN FOOTBALL',
-    home: 'Kenya',
-    away: 'Tanzania',
-    homeScore: null,
-    awayScore: null,
-    status: 'UPCOMING',
-  },
-  {
-    league: 'SPANISH LA LIGA',
-    home: 'Barcelona',
-    away: 'Real Madrid',
-    homeScore: 1,
-    awayScore: 1,
-    status: 'FULL TIME',
-  },
-]
 
 const news = [
   {
