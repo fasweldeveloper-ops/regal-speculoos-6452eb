@@ -18,6 +18,37 @@ function App() {
   const [page, setPage] = useState('Home')
   const [language, setLanguage] = useState('sw')
   const [selectedMatch, setSelectedMatch] = useState(null)
+    const [matches, setMatches] = useState([])
+  const [loading, setLoading] = useState(true)
+  const [apiError, setApiError] = useState('')
+
+  useEffect(() => {
+    fetch('/.netlify/functions/livescore')
+      .then((response) => {
+        if (!response.ok) throw new Error('Failed to load matches')
+        return response.json()
+      })
+      .then((data) => {
+        if (data.success !== 1) throw new Error('Football data unavailable')
+
+        const liveMatches = (data.result || []).map((event) => ({
+          league: event.league_name || 'FOOTBALL',
+          home: event.event_home_team,
+          away: event.event_away_team,
+          homeScore: event.event_final_result
+            ? Number(event.event_final_result.split(' - ')[0])
+            : null,
+          awayScore: event.event_final_result
+            ? Number(event.event_final_result.split(' - ')[1])
+            : null,
+          status: event.event_live === '1' ? 'LIVE' : 'FINISHED',
+        }))
+
+        setMatches(liveMatches)
+      })
+      .catch(() => setApiError('Could not load football matches.'))
+      .finally(() => setLoading(false))
+  }, [])
 
   const kiswahili = language === 'sw'
 
