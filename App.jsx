@@ -286,9 +286,14 @@ function MatchCard({ match, kiswahili, onClick }) {
         </div>
       </div>
 
-      <div className="match-bottom">
-        {kiswahili ? 'Gusa kuona maelezo' : 'Tap to see details'} →
-      </div>
+<div className="match-bottom">
+  <span>
+    {match.matchTime || (kiswahili ? 'Muda haujulikani' : 'Time unavailable')}
+  </span>
+  <span>
+    {kiswahili ? 'Gusa kuona maelezo' : 'Tap to see details'} →
+  </span>
+</div>
     </button>
   )
 }
