@@ -31,18 +31,23 @@ function App() {
       .then((data) => {
         if (data.success !== 1) throw new Error('Football data unavailable')
 
-        const liveMatches = (data.result || []).map((event) => ({
-          league: event.league_name || 'FOOTBALL',
-          home: event.event_home_team,
-          away: event.event_away_team,
-          homeScore: event.event_final_result
-            ? Number(event.event_final_result.split(' - ')[0])
-            : null,
-          awayScore: event.event_final_result
-            ? Number(event.event_final_result.split(' - ')[1])
-            : null,
-          status: event.event_live === '1' ? 'LIVE' : 'FINISHED',
-        }))
+        const liveMatches = (data.result || []).map((event) => {
+  const score = event.event_final_result || event.event_halftime_result || ''
+  const scoreParts = score.match(/^(\d+)\s*-\s*(\d+)$/)
+
+  const finished = event.event_status === 'Finished'
+
+  return {
+    league: event.league_name || 'FOOTBALL',
+    home: event.event_home_team,
+    away: event.event_away_team,
+    homeScore: scoreParts ? Number(scoreParts[1]) : null,
+    awayScore: scoreParts ? Number(scoreParts[2]) : null,
+    status: finished ? 'FINISHED' : 'LIVE',
+    matchTime: event.event_status,
+    country: event.country_name,
+  }
+})
 
         setMatches(liveMatches)
       })
