@@ -200,11 +200,7 @@ function App() {
                 </p>
               </div>
             )}
-            <p className="demo-note">
-              {kiswahili
-                ? 'Taarifa za mechi ni za mfano.'
-                : 'All match information is sample data.'}
-            </p>
+          
           </section>
         )}
 
