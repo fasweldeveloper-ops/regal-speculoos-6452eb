@@ -72,10 +72,7 @@ function App() {
 
   return () => clearInterval(interval)
 }, [])
-      .then((response) => {
-        if (!response.ok) throw new Error('Failed to load matches')
-        return response.json()
-      })
+    
       .then((data) => {
         if (data.success !== 1) throw new Error('Football data unavailable')
 
