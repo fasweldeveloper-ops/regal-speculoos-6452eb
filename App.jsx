@@ -206,7 +206,7 @@ function App() {
 ))}
       
 
-            {selectedMatch !== null && (
+  {selectedMatch !== null && matches[selectedMatch] && (
               <div className="commentary-box">
                 <h3>
                   {matches[selectedMatch].home} dhidi ya{' '}
