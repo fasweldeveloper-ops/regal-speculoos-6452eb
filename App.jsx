@@ -129,7 +129,7 @@ function App() {
                   <span className="eyebrow">
                     {kiswahili ? 'UWANJANI' : 'ON THE PITCH'}
                   </span>
-                  <h2>{kiswahili ? 'Mechi za Mfano' : 'Sample Matches'}</h2>
+                  <h2>{kiswahili ? 'Mechi za Moja kwa Moja' : 'Live Football Matches'}</h2>
                 </div>
                 <button className="text-button"
                   onClick={() => setPage('Matches')}>
