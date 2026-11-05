@@ -231,11 +231,19 @@ function MatchCard({ match, kiswahili, onClick }) {
     <button className="match-card" onClick={onClick}>
       <div className="match-top">
         <span>{match.league}</span>
-        <span className={match.status === 'UPCOMING' ? 'upcoming' : 'finished'}>
-          {match.status === 'UPCOMING'
-            ? kiswahili ? 'IJAYO' : 'UPCOMING'
-            : kiswahili ? 'IMEISHA' : 'FULL TIME'}
-        </span>
+      <span className={
+  match.status === 'LIVE'
+    ? 'live'
+    : match.status === 'UPCOMING'
+      ? 'upcoming'
+      : 'finished'
+}>
+  {match.status === 'LIVE'
+    ? kiswahili ? 'LIVE' : 'LIVE'
+    : match.status === 'UPCOMING'
+      ? kiswahili ? 'IJAYO' : 'UPCOMING'
+      : kiswahili ? 'IMEISHA' : 'FULL TIME'}
+</span>
       </div>
 
       <div className="teams">
