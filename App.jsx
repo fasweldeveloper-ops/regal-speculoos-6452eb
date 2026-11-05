@@ -204,15 +204,7 @@ function App() {
     }
   />
 ))}
-              <MatchCard
-                key={match.home}
-                match={match}
-                kiswahili={kiswahili}
-                onClick={() =>
-                  setSelectedMatch(selectedMatch === index ? null : index)
-                }
-              />
-            ))}
+      
 
             {selectedMatch !== null && (
               <div className="commentary-box">
